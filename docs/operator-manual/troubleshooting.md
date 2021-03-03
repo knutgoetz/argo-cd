@@ -38,10 +38,10 @@ docker run --rm -it -w /src -v $(pwd):/src argoproj/argocd:<version> \
   argocd-util settings resource-overrides ignore-differences ./deploy.yaml --argocd-cm-path ./argocd-cm.yaml
 ```
 
-* Health Assessment
+**Health Assessment**
 
-[Health assessment](../user-guide/diffing.md) allows excluding some resource fields from diffing process.
-The diffing customizations are configured in `resource.customizations` field of `argocd-cm` ConfigMap. 
+[Health assessment](../health.md) allows you to write custom health checks in [LUA](https://www.lua.org/).
+Custom health checks can be defined in `resource.customizations` field of `argocd-cm`.
 
 The following `argocd-util` command assess resource health using Lua script configured in the specified ConfigMap.
 
@@ -50,7 +50,7 @@ docker run --rm -it -w /src -v $(pwd):/src argoproj/argocd:<version> \
   argocd-util settings resource-overrides health ./deploy.yaml --argocd-cm-path ./argocd-cm.yaml
 ```
 
-* Resource Actions
+**Resource Actions**
 
 Resource actions allows configuring named Lua script which performs resource modification.
 
